@@ -1,11 +1,28 @@
-//Function To generate a random 
+const MAXSCORE = 3;
+//variables
 const actions = ["Rock", "Paper", "Scissors"]
 var playerScore = 0;
 var computerScore = 0;
 var currentRound = 0;
+
+// Function to start a new game
 function newGame(){
-    playerScore, computerScore, currentRound=0;
+    const roundResult = document.querySelector(".current-round");
+    if(playerScore == MAXSCORE){
+        roundResult.innerHTML = "Player WON! Click any button to start a new GAME"
+    }
+    if(computerScore == MAXSCORE){
+        roundResult.innerHTML = "Computer WON! Click any button to start a new GAME"
+    }
+    playerScore = 0, computerScore = 0, currentRound=0;
 }
+function playerWon(){
+    playerScore += 1;
+}
+function computerWon(){
+    computerScore += 1;
+}
+//Function To generate a random computer choice from [rock, paper, scissors]
 function getComputerChoice(){
     var rand = Math.floor(Math.random()*3)
     return actions[rand];
@@ -64,9 +81,12 @@ function playRound(playerSelection, computerSelection){
     }
     switch (flag){
         case 1:
+            playerWon();
             return "you win! " + playerSelection + " beats " + computerSelection;
             break;
         case 2:
+            computerWon();
+            console.log(computerScore);
             return "you Lose! " + computerSelection + " beats " + playerSelection;
             break;
         default:
@@ -96,7 +116,16 @@ function updateRound(button){
 
     const playerSelection = button;
     var computerSelection = getComputerChoice();
-    console.log(playRound(playerSelection, computerSelection));
     const roundResult = document.querySelector(".current-round")
     roundResult.innerHTML =  playRound(playerSelection, computerSelection);
+    updateScores();
+
+}
+
+function updateScores(){
+    document.querySelector(".player-score").innerHTML = playerScore;
+    document.querySelector(".computer-score").innerHTML = computerScore;
+    if(playerScore == 3 || computerScore == 3){
+        newGame();
+    }
 }
