@@ -70,23 +70,33 @@ function playRound(playerSelection, computerSelection){
             return "you Lose! " + computerSelection + " beats " + playerSelection;
             break;
         default:
-            return "TIE " ;
+            return "TIE! Both Choices were "+ computerSelection ;
     }
 }
 
 const playerSelection = "Rock";
-for(let i = 0; i < 5; i++){
-    var computerSelection = getComputerChoice();
-    console.log(playRound(playerSelection, computerSelection));
-}
+// for(let i = 0; i < 5; i++){
+//     var computerSelection = getComputerChoice();
+//     console.log(playRound(playerSelection, computerSelection));
+// }
 
 //adds event listener to each button and runs the game after the player presses a button
 document.querySelectorAll(".button").forEach(button=>{
-    button.addEventListener('click', ()=>{
-    const playerSelection = button.id;
+    button.addEventListener('click', (button)=>{
+        updateRound(button.target.id);
+    });
+})
+
+/**
+ * updates the current round string after pressing one of the buttons
+ *
+ * @param {string} button, the ID (rock, paper, scissors) of the pressed button
+ */
+function updateRound(button){
+
+    const playerSelection = button;
     var computerSelection = getComputerChoice();
     console.log(playRound(playerSelection, computerSelection));
     const roundResult = document.querySelector(".current-round")
     roundResult.innerHTML =  playRound(playerSelection, computerSelection);
-    })
-})
+}
