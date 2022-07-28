@@ -5,20 +5,30 @@ var playerScore = 0;
 var computerScore = 0;
 var currentRound = 0;
 
-// Function to start a new game
+/**
+ * Tells the user that the previous game was over and starts a new game
+ * 
+ * sets the score values to 0
+ */
 function newGame(){
     const roundResult = document.querySelector(".current-round");
     if(playerScore == MAXSCORE){
-        roundResult.innerHTML = "Player WON! Click any button to start a new GAME"
+        roundResult.innerText = "Player WON! Click any button to start a new GAME"
     }
     if(computerScore == MAXSCORE){
-        roundResult.innerHTML = "Computer WON! Click any button to start a new GAME"
+        roundResult.innerText = "Computer WON! Click any button to start a new GAME"
     }
     playerScore = 0, computerScore = 0, currentRound=0;
 }
+/**
+ * updates player score when they win a round
+ */
 function playerWon(){
     playerScore += 1;
 }
+/**
+ * updates computer score when they win a round
+ */
 function computerWon(){
     computerScore += 1;
 }
@@ -94,11 +104,7 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
-const playerSelection = "Rock";
-// for(let i = 0; i < 5; i++){
-//     var computerSelection = getComputerChoice();
-//     console.log(playRound(playerSelection, computerSelection));
-// }
+// const playerSelection = "Rock";
 
 //adds event listener to each button and runs the game after the player presses a button
 document.querySelectorAll(".button").forEach(button=>{
@@ -117,15 +123,20 @@ function updateRound(button){
     const playerSelection = button;
     var computerSelection = getComputerChoice();
     const roundResult = document.querySelector(".current-round")
-    roundResult.innerHTML =  playRound(playerSelection, computerSelection);
+    roundResult.innerText =  playRound(playerSelection, computerSelection);
     updateScores();
 
 }
 
+/**
+ * updates the Score for both the plyer and Computer
+
+ * Calls newGame() if the max score was reached by one of the players
+ */
 function updateScores(){
-    document.querySelector(".player-score").innerHTML = playerScore;
-    document.querySelector(".computer-score").innerHTML = computerScore;
-    if(playerScore == 3 || computerScore == 3){
+    document.querySelector(".player-score").innerText = playerScore;
+    document.querySelector(".computer-score").innerText = computerScore;
+    if(playerScore == MAXSCORE || computerScore == MAXSCORE){
         newGame();
     }
 }
