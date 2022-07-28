@@ -68,3 +68,15 @@ for(let i = 0; i < 5; i++){
     var computerSelection = getComputerChoice();
     console.log(playRound(playerSelection, computerSelection));
 }
+
+//adds event listener to each button and runs the game after the player presses a button
+document.querySelectorAll(".button").forEach(button=>{
+    button.addEventListener('click', ()=>{
+    const playerSelection = button.id;
+    for(let i = 0; i < 5; i++){
+        var computerSelection = getComputerChoice();
+        console.log(playRound(playerSelection, computerSelection));
+    }
+    console.log("GAME OVER");
+    })
+})
