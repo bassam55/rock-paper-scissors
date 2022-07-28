@@ -1,11 +1,22 @@
 //Function To generate a random 
 const actions = ["Rock", "Paper", "Scissors"]
-
+var playerScore = 0;
+var computerScore = 0;
+var currentRound = 0;
+function newGame(){
+    playerScore, computerScore, currentRound=0;
+}
 function getComputerChoice(){
     var rand = Math.floor(Math.random()*3)
     return actions[rand];
 }
-
+/**
+ * Returns the result of 1 round of rps game
+ *
+ * @param {string} playerSelection, the player choice
+ * @param {string} computerSelection, the computer random selection
+ * @return {string} a string indicating whether the player or the computer won the the game
+ */
 function playRound(playerSelection, computerSelection){
     var player = playerSelection.toLowerCase();
     var computer = computerSelection.toLowerCase();
@@ -73,10 +84,9 @@ for(let i = 0; i < 5; i++){
 document.querySelectorAll(".button").forEach(button=>{
     button.addEventListener('click', ()=>{
     const playerSelection = button.id;
-    for(let i = 0; i < 5; i++){
-        var computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection));
-    }
-    console.log("GAME OVER");
+    var computerSelection = getComputerChoice();
+    console.log(playRound(playerSelection, computerSelection));
+    const roundResult = document.querySelector(".current-round")
+    roundResult.innerHTML =  playRound(playerSelection, computerSelection);
     })
 })
