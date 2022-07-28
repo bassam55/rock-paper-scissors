@@ -1,0 +1,16 @@
+body{
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+}
+
+.game-title{
+    display: flex;
+    padding: 32px 25%;
+    text-align: center;
+}
+
+.button-container{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 0% 25%;
+}
