@@ -1,0 +1,47 @@
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    display: flex;
+    flex-direction: column;
+}
+
+.game-title{
+    display: flex;
+    /* padding: 16px 25% */
+    text-align: center;
+    justify-content: center;
+}
+.game-discription{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.button-container{
+    display: flex;
+    justify-content: space-between;
+    padding: 18px 25%;
+}
+.button{
+    padding: 8px 16px;
+    width: 100px;
+}
+
+.section-container{
+    display: flex;
+    justify-content: center;
+    padding: 18px;
+}
+.round-result{  
+    margin: auto 25%;
+    border: 1px solid;
+    justify-content: center;
+    text-align: center;
+}
+table {
+    border-collapse: separate;
+    border-spacing: 100px 0;
+    text-align: center;
+    border: 1px solid;
+}
+
+
